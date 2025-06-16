@@ -1,25 +1,13 @@
-name: Test VM Environment
+name: Checkout and Run
 
 on: [push]
 
 jobs:
-  show-env:
+  checkout-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Node.js version
-        run: node -v
+      - name: Checkout the code
+        uses: actions/checkout@v4
 
-      - name: Check Python version
-        run: python3 --version
-
-      - name: Check Java version
-        run: java -version
-
-      - name: Check Docker version
-        run: docker --version
-
-      - name: List all installed commands
-        run: compgen -c | sort
-
-      - name: Show environment variables
-        run: env
+      - name: List files
+        run: ls -la
