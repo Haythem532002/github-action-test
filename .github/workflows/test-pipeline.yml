@@ -1,0 +1,21 @@
+name: Test Pipeline 
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest      
+    steps:
+      - name: checkout code
+        run: actions/checkout@v4
+      - name: test code
+        run: echo 'testing'
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy code
+        run: echo 'deploying'
+        
